@@ -12,6 +12,15 @@ Tree.prototype.addValue = function(val) {
     }
 }
 
+Tree.prototype.findValue = function(val) {
+    if (!this.root) {
+        console.log('The Tree is empty')
+        return -1;
+    }
+
+    this.root.findNode(val);
+}
+
 function Node(val) {
     this.val = val;
     this.left = null;
@@ -42,9 +51,28 @@ Node.prototype.addNode = function(newNode) {
     }
 }
 
+Node.prototype.findNode = function(target) {
+    console.log(`Looking for ${target} in the Tree`);
+    if (this.val === target) {
+        console.log(`Target Value:${target} Found`);
+        console.log('------------------------------');
+        return this.val;
+    }
+
+    if (target < this.val && this.left) {
+        this.left.findNode(target);
+    } else if (target > this.val && this.right) {
+        this.right.findNode(target);
+    } else {
+        console.log(`Unable to find the value: ${target} in the Tree`);
+        console.log('------------------------------');
+        return -1;
+    }
+}
+
 function createRandomNodes() {
     for (let i = 0; i < 10; i++) {
-        // Create 10 nodes with random node value 1 ~ 100
+        // Create 10 Nodes with random value 1 ~ 100
         const nodeValue = Math.floor(Math.random() * 100) + 1;
         tree.addValue(nodeValue);
     }
@@ -62,3 +90,6 @@ let tree = new Tree();
 createRandomNodes();
 inOrderTraverse(tree.root);
 console.dir(tree);
+tree.findValue(13);
+tree.findValue(27);
+tree.findValue(23);
