@@ -21,6 +21,14 @@ Tree.prototype.findValue = function(val) {
     this.root.findNode(val);
 }
 
+Tree.prototype.inOrderTraverse = function(node = this.root) {
+    if (node) {
+        this.inOrderTraverse(node.left);
+        console.log('node value = ', node.val);
+        this.inOrderTraverse(node.right);
+    }
+}
+
 function Node(val) {
     this.val = val;
     this.left = null;
@@ -78,17 +86,9 @@ function createRandomNodes() {
     }
 }
 
-function inOrderTraverse(node) {
-    if (node) {
-        inOrderTraverse(node.left);
-        console.log('node value = ', node.val);
-        inOrderTraverse(node.right);
-    }   
-}
-
 let tree = new Tree();
 createRandomNodes();
-inOrderTraverse(tree.root);
+tree.inOrderTraverse();
 console.dir(tree);
 tree.findValue(13);
 tree.findValue(27);
