@@ -1,8 +1,8 @@
-binarySearch(arr, target) {
+function binarySearch(arr, target) {
     let start  = 0;
     let end = arr.length - 1;
     let mid;
-    let i = 0
+    let i = 0;
     while (start <= end) {
         mid = Math.floor((end + start)/ 2, 10);
         mid = (end + start)/ 2;
