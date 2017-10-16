@@ -27,6 +27,13 @@ Tree.prototype.inOrderTraverse = function(node = this.root) {
         console.log('node value = ', node.val);
         this.inOrderTraverse(node.right);
     }
+
+Tree.prototype.preOrderTraverse = function(node = this.root) {
+    if (node) {
+        console.log('node value = ', node.val);
+        this.preOrderTraverse(node.left)
+        this.preOrderTraverse(node.right)
+    }
 }
 
 function Node(val) {
@@ -89,6 +96,7 @@ function createRandomNodes() {
 let tree = new Tree();
 createRandomNodes();
 tree.inOrderTraverse();
+tree.preOrderTraverse();
 console.dir(tree);
 tree.findValue(13);
 tree.findValue(27);
