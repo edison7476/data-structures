@@ -24,15 +24,23 @@ Tree.prototype.findValue = function(val) {
 Tree.prototype.inOrderTraverse = function(node = this.root) {
     if (node) {
         this.inOrderTraverse(node.left);
-        console.log('node value = ', node.val);
+        console.log('inOrderTraverse: node value = ', node.val);
         this.inOrderTraverse(node.right);
     }
 
 Tree.prototype.preOrderTraverse = function(node = this.root) {
     if (node) {
-        console.log('node value = ', node.val);
+        console.log('preOrderTraverse: node value = ', node.val);
         this.preOrderTraverse(node.left)
         this.preOrderTraverse(node.right)
+    }
+}
+
+Tree.prototype.postOrderTraverse = function(node = this.root) {
+    if (node) {
+        this.postOrderTraverse(node.left)
+        this.postOrderTraverse(node.right)
+        console.log('postOrderTraverse: node value = ', node.val);
     }
 }
 
@@ -101,3 +109,4 @@ console.dir(tree);
 tree.findValue(13);
 tree.findValue(27);
 tree.findValue(23);
+tree.postOrderTraverse()
